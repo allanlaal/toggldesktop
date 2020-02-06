@@ -145,7 +145,10 @@ namespace TogglDesktop
                 if (!keepNewProjectModeOpen)
                 {
                     if (this.isInNewProjectMode)
+                    {
                         this.createProjectPopup.IsOpen = false;
+                        this.disableNewProjectMode();
+                    }
 
                     this.defaultProjectColorCircle.Background = Utils.ProjectColorBrushFromString(timeEntry.Color);
 
@@ -676,7 +679,7 @@ namespace TogglDesktop
 
             this.selectClient(item);
 
-            this.projectTextBox.Focus();
+            this.newProjectTextBox.Focus();
         }
 
         private void selectClient(Toggl.TogglGenericView item)
@@ -750,7 +753,7 @@ namespace TogglDesktop
                 this.workspaceTextBox.SetText(this.selectedWorkspaceName);
             }
 
-            this.projectTextBox.Focus();
+            this.newProjectTextBox.Focus();
         }
         #endregion
 
@@ -818,7 +821,7 @@ namespace TogglDesktop
             if (this.tryCreatingNewClient(this.clientTextBox.Text))
             {
                 this.disableNewClientMode();
-                this.projectTextBox.Focus();
+                this.newProjectTextBox.Focus();
             }
         }
 
@@ -837,7 +840,7 @@ namespace TogglDesktop
 
             this.disableNewClientMode();
 
-            this.projectTextBox.Focus();
+            this.newProjectTextBox.Focus();
 
             return true;
         }
